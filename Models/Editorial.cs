@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyEfTools.Models;
 
@@ -11,4 +12,7 @@ class Editorial
     [EmailAddress] public string CorreoElectronico { get; set; }
     [Url] public string SitioWeb { get; set; }
     [Required, MaxLength(300)] public string Docimilio { get; set; }
+
+    // propiedades para manejo interno de EFCore
+    [NotMapped] public List<Libro> Libros { get; set; }
 }
