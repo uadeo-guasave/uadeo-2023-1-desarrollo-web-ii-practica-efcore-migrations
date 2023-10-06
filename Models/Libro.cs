@@ -12,4 +12,7 @@ class Libro
 
     // propiedades para manejo de relaciones desde EFCore
     [NotMapped] public Editorial Editorial { get; set; }
+
+    [NotMapped]
+    public List<AutorLibro> AutoresLibros { get; set; }
 }
