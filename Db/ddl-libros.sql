@@ -50,4 +50,21 @@ VALUES ('20231003150607_createTableLibros', '7.0.11');
 
 COMMIT;
 
+BEGIN TRANSACTION;
+
+CREATE TABLE "AutoresLibros" (
+    "AutorId" INTEGER NOT NULL,
+    "LibroId" INTEGER NOT NULL,
+    CONSTRAINT "PK_AutoresLibros" PRIMARY KEY ("AutorId", "LibroId"),
+    CONSTRAINT "FK_AutoresLibros_Autores_AutorId" FOREIGN KEY ("AutorId") REFERENCES "Autores" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AutoresLibros_Libros_LibroId" FOREIGN KEY ("LibroId") REFERENCES "Libros" ("Id") ON DELETE CASCADE
+);
+
+CREATE INDEX "IX_AutoresLibros_LibroId" ON "AutoresLibros" ("LibroId");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20231012143725_createTableAutoresLibros', '7.0.11');
+
+COMMIT;
+
 
